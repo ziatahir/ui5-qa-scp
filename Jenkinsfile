@@ -16,7 +16,7 @@ pipeline {
               organization: 'P2001960486trial_trial',
               cloudSpace: 'dev',
               credentialsId: 'cf-scp',
-			  manifestChoice: [manifestFile: './manifest.yml']
+			  manifestChoice: [manifestFile: '/var/lib/jenkins/workspace/deploy-UI5-HelloWorld/manifest.yml']
               )
             }
         }
