@@ -9,7 +9,7 @@ pipeline {
            steps {
 		   
 		      echo "deploying on scp"
-			  scm checkout
+			  checkout scm
 			  
 			  pushToCloudFoundry(
               target: 'https://api.cf.eu10.hana.ondemand.com',
