@@ -4,21 +4,24 @@ pipeline {
     
     stages {
 
-	    
+	
         stage('Deploy-SCP') {
            steps {
-		   
 		      echo "deploying on scp"
-			  checkout scm
 			  
-			  pushToCloudFoundry(
-              target: 'https://api.cf.eu10.hana.ondemand.com',
-              organization: 'P2001960486trial_trial',
-              cloudSpace: 'dev',
-              credentialsId: 'cf-scp',
-			  manifestChoice: [manifestFile: '/var/lib/jenkins/workspace/deploy-UI5-HelloWorld/manifest.yaml']
-              )
-            }
+			  cleanWs()
+			  checkout scm
+
+		  
+			  withCredentials([usernamePassword(credentialsId: 'CF-devsecops20', passwordVariable: 'cfPassword', usernameVariable: 'cfUser')])
+			    {
+				    sh '''
+                     cf login -a 'https://api.cf.eu10.hana.ondemand.com' -u ${cfUser} -p ${cfPassword} -o P2001960486trial_trial -s qa
+					 cf push
+					'''
+				}
+
+             }
         }
        
         
