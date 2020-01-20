@@ -22,7 +22,7 @@ pipeline {
 			    {
 				    sh '''
                      cf login -a 'https://api.cf.eu10.hana.ondemand.com' -u ${cfUser} -p ${cfPassword} -o $organisation -s $space
-					 cf delete -r ui5CfCli -f
+					 cf delete -r ui5HelloWorld -f
 					 cf push
 					'''
 				}
