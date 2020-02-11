@@ -2,7 +2,7 @@ pipeline {
     
 	parameters {
         string(name: 'organisation', defaultValue: 'P2001960486trial_trial', description: 'org name to deploy app')
-		string(name: 'space', defaultValue: 'qa', description: 'space name')
+		string(name: 'space', defaultValue: 'dev', description: 'space name')
 		}
 	
     agent {label "master"}
